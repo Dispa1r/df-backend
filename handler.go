@@ -65,6 +65,7 @@ func twitterVerifyHandler(c *gin.Context) {
 	verifyResult := CheckVerifyTweet(fullPubkey, tmpMsg.twitter)
 	if len(verifyResult) != 0 {
 		userTwitterMap[tmpMsg.sender] = verifyResult
+		log.Printf("Twitter Bind Info: User %s bind %s\n", verifyResult, hexutil.Encode(realAddress))
 		c.JSON(200, gin.H{
 			"success": true,
 			"message": "success to bind the address",

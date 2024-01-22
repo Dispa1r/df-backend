@@ -1,7 +1,6 @@
 package main
 
 import (
-	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 	"log"
@@ -30,7 +29,7 @@ func init() {
 func main() {
 
 	r := gin.Default()
-	r.Use(cors.Default())
+	r.Use(Cors())
 
 	r.GET("/twitter/all-twitters", func(c *gin.Context) {
 		c.JSON(200, userTwitterMap)
